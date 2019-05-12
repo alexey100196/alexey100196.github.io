@@ -38,15 +38,14 @@ import ProgresBar from "./components/ProgresBar.vue";
 export default {
   data() {
     return {
-      visible: "Starting",
+      visible: "Starting", // Вывод компонентов 
       descriptionMessage: '', // Отвечает за вывод success и error при нажатии на successQuest() или errorQuest()
       status: {
         success: 0, // Счетчик верных ответов
         error: 0 // Счетчик не верных ответов
       },
       level: 1,
-      progresBar: 0, //Заполнение прогресс бара
-      // progres: 0
+      progresBar: 0, //Заполнение прогресс бара || при заполнении переход на следующий уровень 
     };
   },
   computed: {},
@@ -58,7 +57,6 @@ export default {
       if (this.progresBar >= 100) {
         this.progresBar = 100;
       }
-      // this.progres += 1;
     },
     errorQuest() {
       this.visible = "Message";
@@ -67,7 +65,6 @@ export default {
       if (this.progresBar <= 0) {
         this.progresBar = 0;
       }
-      // this.progres += 1;
     },
     nextQuestion() {
       if (this.progresBar >= 100) {
