@@ -137,7 +137,7 @@ export default {
 /* Animation */
 .switch-enter-active,
 .switch-leave-active {
-  transition: all 0s;
+  transition: all 0.3s;
 }
 .switch-enter,
 .switch-leave-to {
