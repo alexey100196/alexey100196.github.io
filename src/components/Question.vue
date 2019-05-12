@@ -20,7 +20,6 @@ export default {
     return {
       x: this.randomNumber(),
       y: this.randomNumber(),
-      // progres: 30
     };
   },
   methods: {

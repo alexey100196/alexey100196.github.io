@@ -1,8 +1,7 @@
 <template>
   <div>
     <div class="container-content">
-      <span>{{text}}</span>
-      <span>{{type}}</span>
+      <span>{{descriptionMessage}}</span>
       <div class="answer">
         <button class="btn" @click="$emit('nextQuest')">Continue</button>
       </div>
@@ -12,7 +11,7 @@
 
 <script>
 export default {
-  props: ["type", "text"],
+  props: ["descriptionMessage"],
   data() {
     return {};
   }

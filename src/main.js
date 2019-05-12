@@ -13,3 +13,18 @@ new Vue({
   el: '#app',
   render: h => h(App),
 })
+
+  // for(let s = 0; s <= 20; s++) {
+  //   setInterval(function  printNumbersInterval() {
+  //     console.log(s)
+  //   }, 1000)
+  // }
+
+
+
+
+
+
+
+
+

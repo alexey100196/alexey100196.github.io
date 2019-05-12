@@ -1,30 +1,28 @@
-<template>
+<template >
   <div class="container">
     <h1>Math training. Level {{level}}</h1>
+    <button @click="printNumbersInterval()">printNumbersInterval()</button>
     <hr>
     <ProgresBar :progresBar="progresBar"></ProgresBar>
     <transition name="switch" mode="out-in">
-      <starting v-if="visible === 'Starting'" v-on:visibleQuestion="visible = 'Question'"></starting>
+      <starting v-if="visible === 'Starting'" @visibleQuestion="visible = 'Question'"></starting>
       <question
         v-else-if="visible === 'Question'"
-        v-on:success="successQuest"
-        v-on:error="errorQuest"
-        :progres="progres"
+        @success="successQuest"
+        @error="errorQuest"
       ></question>
       <Result
         v-else-if="visible === 'Result'"
         :status="status"
-        v-on:nextLevel="nextLevel"
-        v-on:repeatLevel="repeatLevel"
+        @nextLevel="nextLevel"
+        @repeatLevel="repeatLevel"
       ></Result>
-      <wright-answer v-else-if="visible === 'RightAnswer'"></wright-answer>
       <message
         v-else-if="visible === 'Message'"
-        :type="message.type"
-        :text="message.text"
+        :descriptionMessage="descriptionMessage"
         :success="status.success"
         :error="status.error"
-        v-on:nextQuest="nextQuestion"
+        @nextQuest="nextQuestion"
       ></message>
     </transition>
   </div>
@@ -34,7 +32,6 @@
 import Starting from "./components/Starting.vue";
 import Question from "./components/Question.vue";
 import Result from "./components/Result.vue";
-import RightAnswer from "./components/RightAnswer.vue";
 import Message from "./components/Message.vue";
 import ProgresBar from "./components/ProgresBar.vue";
 
@@ -42,48 +39,53 @@ export default {
   data() {
     return {
       visible: "Starting",
-      message: {
-        type: "",
-        text: ""
-      },
+      descriptionMessage: '', // Отвечает за вывод success и error при нажатии на successQuest() или errorQuest()
       status: {
-        success: 0,
-        error: 0
+        success: 0, // Счетчик верных ответов
+        error: 0 // Счетчик не верных ответов
       },
       level: 1,
-      progresBar: 0,
-      progres: 0
+      progresBar: 0, //Заполнение прогресс бара
+      // progres: 0
     };
   },
   computed: {},
   methods: {
     successQuest() {
       this.visible = "Message";
-      this.message.text = "Success: " + (this.status.success += 1);
+      this.descriptionMessage = "Success: " + (this.status.success += 1);
       this.progresBar += 34;
       if (this.progresBar >= 100) {
         this.progresBar = 100;
       }
-      this.progres += 1;
+      // this.progres += 1;
     },
     errorQuest() {
       this.visible = "Message";
-      this.message.text = "Error: " + (this.status.error += 1);
+      this.descriptionMessage = "Error: " + (this.status.error += 1);
       this.progresBar -= 20;
       if (this.progresBar <= 0) {
         this.progresBar = 0;
       }
-      this.progres += 1;
+      // this.progres += 1;
     },
     nextQuestion() {
-      if (this.progresBar == 100) {
-        this.progres = 0;
+      if (this.progresBar >= 100) {
+        // this.progres = 0;
         this.progresBar = 0;
         this.visible = "Result";
       } else {
         this.visible = "Question";
       }
     },
+    // printNumbersInterval() {
+    //   let i = 1;
+    //   0;
+    //   console.log(i);
+    //   i++;
+    //   setTimeout(this.printNumbersInterval, 100);
+    // },
+
     nextLevel() {
       this.visible = "Question";
       this.level += 1;
@@ -99,7 +101,6 @@ export default {
     Starting,
     Question,
     Result,
-    RightAnswer,
     Message,
     ProgresBar
   }
