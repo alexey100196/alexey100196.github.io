@@ -118,6 +118,7 @@ export default {
         error = 35;
       }
       //Количество Ответов
+      
       // if (this.level % 2) {
       //   this.levelUp.answerLength += 1;
       // }
