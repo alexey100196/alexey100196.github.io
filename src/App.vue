@@ -109,14 +109,10 @@ export default {
       this.levelUp.sum.min += 50;
       this.levelUp.sum.max += 50;
       // Значение прироста и отката прогресса
-      let success = (this.levelUp.BarProgres.BarProgresSuccess -= 5);
-      let error = (this.levelUp.BarProgres.BarProgresError += 5);
-      if (success <= 25) {
-        success = 25;
-      }
-      if (error >= 35) {
-        error = 35;
-      }
+      this.levelUp.BarProgres.BarProgresSuccess -= 5;;
+      this.levelUp.BarProgres.BarProgresError += 5;
+      this.levelUp.BarProgres.BarProgresSuccess <= 45 && (this.levelUp.BarProgres.BarProgresSuccess = 45) // if BarProgresSuccess <= 45 ? BarProgresSuccess = 45
+      this.levelUp.BarProgres.BarProgresError >= 25 && (this.levelUp.BarProgres.BarProgresError = 25)
       //Количество Ответов
       
       // if (this.level % 2) {
