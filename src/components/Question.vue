@@ -1,14 +1,14 @@
 <template>
   <div>
     <div class="container-content">
-      <span>{{x}} + {{y}} = ?</span>
+      <span>{{x}} + {{y}} = {{this.rightAnswer}}</span>
       <div class="answer">
         <button
           class="btn"
-          v-for="(item, i) in numbers"
+          v-for="(number, i) in answer"
           :key="i"
-          @click="clickAnswer(item)"
-        >{{item}}</button>
+          @click="clickAnswer(number)"
+        >{{number}}</button>
       </div>
     </div>
   </div>
@@ -16,41 +16,51 @@
 
 <script>
 export default {
+  props: ["levelUp"],
   data() {
     return {
-      x: this.randomNumber(),
-      y: this.randomNumber(),
+      x: randomNumber(this.levelUp.sum.min, this.levelUp.sum.max),
+      y: randomNumber(this.levelUp.sum.min, this.levelUp.sum.max)
     };
   },
   methods: {
-    randomNumber(min, max) {
-      return Math.floor(Math.random() * (100 - 1 + 1)) + 1;
-    },
     clickAnswer(num) {
-      if (num === this.x + this.y) {
+      if (num === this.rightAnswer) {
         this.$emit("success");
       } else {
         this.$emit("error");
       }
-    },
+      console.log(num);
+    }
   },
   computed: {
-    numbers() {
-      let rightAnswer = this.x + this.y;
-      let result = [rightAnswer];
+    rightAnswer() {
+      return this.x + this.y;
+    },
+    answer() {
+      let result = [this.rightAnswer]; //масив вариантов
 
-      while (result.length < 2) {
-        let rand = this.randomNumber();
+      while (result.length < this.levelUp.answerLength) {
+        //Количество кнопок
+        let randNum = randomNumber(
+          this.rightAnswer + 10,
+          this.rightAnswer - 10
+        ); //Записываю в параметры варианты рандомных ответов + - 10 разници от ответа
 
-        if (result.indexOf(rand) === -1) {
-          result.push(rand);
+        if (result.indexOf(randNum) === -1) {
+          // не дает вывести одинаковые кнопки(ответы)
+          result.push(randNum); //пушит рандомный ответ
         }
       }
 
-      return result.sort((a, b) => Math.random() - 0.5);
+      return result.sort((a, b) => Math.random() - 0.5); // сартировка кнопок(ответов) формула
     }
-  },
+  }
 };
+function randomNumber(max, min) {
+  let diff = max - min;
+  return Math.floor(Math.random() * (diff + 1)) + min;
+}
 </script>
 <style scoped>
 span {
@@ -61,9 +71,8 @@ span {
 }
 .answer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
-  width: 50%;
   margin: 0 auto;
 }
 </style>
