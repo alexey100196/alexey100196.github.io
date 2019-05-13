@@ -133,8 +133,8 @@ export default {
       this.level = 1;
       this.status.success = 0;
       this.status.error = 0;
-      this.BarProgres.BarProgresSuccess = 50;
-      this.BarProgres.BarProgresError = 20;
+      this.levelUp.BarProgres.BarProgresSuccess = 50;
+      this.levelUp.BarProgres.BarProgresError = 20;
     }
   },
   components: {
