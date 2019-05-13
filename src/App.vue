@@ -133,14 +133,9 @@ export default {
       this.level = 1;
       this.status.success = 0;
       this.status.error = 0;
+      this.BarProgres.BarProgresSuccess = 50;
+      this.BarProgres.BarProgresError = 20;
     }
-    // printNumbersInterval() {
-    //   let i = 1;
-    //   0;
-    //   console.log(i);
-    //   i++;
-    //   setTimeout(this.printNumbersInterval, 100);
-    // },
   },
   components: {
     Starting,
