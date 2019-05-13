@@ -6,7 +6,6 @@
       <div class="answer">
         <button class="btn" @click="$emit('repeatLevel')">Repeat</button>
         <button class="btn" @click="$emit('nextLevel')">Next level</button>
-        <button class="btn">Stats</button>
 
       </div>
     </div>
