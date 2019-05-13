@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container-content">
-      <span>{{x}} + {{y}} = {{this.rightAnswer}}</span>
+      <span>{{x}} + {{y}} = ?</span>
       <div class="answer">
         <button
           class="btn"
