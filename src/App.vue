@@ -68,7 +68,7 @@ export default {
   computed: {
     answerLengthFFF() {
       if (this.level == 2) {
-        return this.answerLength = 3;
+        return (this.answerLength = 3);
       }
     }
   },
@@ -109,19 +109,17 @@ export default {
       this.levelUp.sum.min += 50;
       this.levelUp.sum.max += 50;
       // Значение прироста и отката прогресса
-      this.levelUp.BarProgres.BarProgresSuccess -= 5;;
+      this.levelUp.BarProgres.BarProgresSuccess -= 5;
       this.levelUp.BarProgres.BarProgresError += 5;
-      this.levelUp.BarProgres.BarProgresSuccess <= 45 && (this.levelUp.BarProgres.BarProgresSuccess = 45) // if BarProgresSuccess <= 45 ? BarProgresSuccess = 45
-      this.levelUp.BarProgres.BarProgresError >= 25 && (this.levelUp.BarProgres.BarProgresError = 25)
+      this.levelUp.BarProgres.BarProgresSuccess <= 45 &&(this.levelUp.BarProgres.BarProgresSuccess = 45); // if BarProgresSuccess <= 45 ? BarProgresSuccess = 45
+      this.levelUp.BarProgres.BarProgresError >= 25 &&(this.levelUp.BarProgres.BarProgresError = 25);
       //Количество Ответов
-      
+
       // if (this.level % 2) {
       //   this.levelUp.answerLength += 1;
       // }
-        this.levelUp.answerLength += 1;
-        if (this.levelUp.answerLength >= 5) {
-        this.levelUp.answerLength = 5;
-      }
+      this.levelUp.answerLength += 1;
+      this.levelUp.answerLength >= 5 && (this.levelUp.answerLength = 5);
     },
     repeatLevel() {
       // выводит компонет Question меняя уровень на начальный = 0 и сбрасывая результаты success и error = 0
