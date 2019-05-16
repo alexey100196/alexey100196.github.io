@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  props: ["status"],
+  props: ["status",],
 
   data() {
     return {

@@ -64,13 +64,13 @@ export default {
       }
     };
   },
-  computed: {
-    answerLengthFFF() {
-      if (this.level == 2) {
-        return (this.answerLength = 3);
-      }
-    }
-  },
+  // computed: {
+  //   answerLength() {
+  //     if (this.level == 2) {
+  //       return (this.answerLength = 3);
+  //     }
+  //   }
+  // },
   methods: {
     success() {
       this.visible = "Message";
@@ -126,6 +126,7 @@ export default {
       this.level = 1;
       this.status.success = 0;
       this.status.error = 0;
+      this.levelUp.answerLength = 2;
       this.levelUp.BarProgres.BarProgresSuccess = 50;
       this.levelUp.BarProgres.BarProgresError = 20;
     }
