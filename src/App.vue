@@ -5,7 +5,6 @@
     <h3 class="progres_bar">Progres point {{levelUp.BarProgres.BarProgresSuccess}}</h3>
     <h3 class="regress_bar">Regress point {{levelUp.BarProgres.BarProgresError}}</h3>
 
-    <!-- <button @click="printNumbersInterval()">printNumbersInterval()</button> -->
     <hr>
     <ProgresBar :progresBar="progresBar"></ProgresBar>
     <transition name="switch" mode="out-in">
@@ -111,8 +110,8 @@ export default {
       // Значение прироста и отката прогресса
       this.levelUp.BarProgres.BarProgresSuccess -= 5;
       this.levelUp.BarProgres.BarProgresError += 5;
-      this.levelUp.BarProgres.BarProgresSuccess <= 45 &&(this.levelUp.BarProgres.BarProgresSuccess = 45); // if BarProgresSuccess <= 45 ? BarProgresSuccess = 45
-      this.levelUp.BarProgres.BarProgresError >= 25 &&(this.levelUp.BarProgres.BarProgresError = 25);
+      this.levelUp.BarProgres.BarProgresSuccess <= 25 &&(this.levelUp.BarProgres.BarProgresSuccess = 25); // if BarProgresSuccess <= 45 ? BarProgresSuccess = 45
+      this.levelUp.BarProgres.BarProgresError >= 40 &&(this.levelUp.BarProgres.BarProgresError = 40);
       //Количество Ответов
 
       // if (this.level % 2) {
